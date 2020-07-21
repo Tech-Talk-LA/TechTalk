@@ -28,6 +28,8 @@ authController.addNewDevice = (req, res, next) => {
 
   // pulls deviceid and authToken from res.locals
   const { deviceId, authToken } = res.locals; 
+
+  
   const values = [deviceId, authToken]; 
 
   db.query(query, values)
