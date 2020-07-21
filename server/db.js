@@ -56,6 +56,19 @@ const pool = new Pool({
 //   FOREIGN KEY (user_id) REFERENCES users(user_id)
 // )
 
+// Conversations table
+// conversation_id
+// sender_id
+// receiver_id
+
+// CREATE Table Conversations (
+//   conversation_id serial PRIMARY KEY,
+//   sender_id int NOT NULL,
+//   receiver_id int NOT NULL,
+//     FOREIGN KEY (sender_id) REFERENCES users(user_id),
+//     FOREIGN KEY (receiver_id) REFERENCES users(user_id)
+// )
+
 // Messages table
 // message_id
 // created_at
@@ -63,14 +76,17 @@ const pool = new Pool({
 // receiver_id
 // conversation_id
 
-// CREATE Messages table (
+// CREATE TABLE Messages (
 // message_id serial PRIMARY KEY,
+// created_at timestamp default current_timestamp NOT NULL,
+// sender_id int NOT NULL,
+// receiver_id int NOT NULL,
+// conversation_id int NOT NULL,
+// body_text VARCHAR NOT NULL,
+// FOREIGN KEY (sender_id) REFERENCES users(user_id),
+// FOREIGN KEY (receiver_id) REFERENCES users(user_id),
+// FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id)
 // )
-
-// Conversations table
-// conversation_id
-// sender_id
-// receiver_id
 
 module.exports = {
   query: (string, params, cb) => {
