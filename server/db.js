@@ -14,16 +14,12 @@ const pool = new Pool({
 //   user_name
 //   description
 //   email
-//   connections
-//   token (for auth?)
 
 // CREATE TABLE Users (
 //   user_id serial PRIMARY KEY,
 //   user_name VARCHAR (100) NOT NULL,
 //   description VARCHAR,
-//   email VARCHAR UNIQUE NOT NULL,
-//   connection_tokens INT NOT NULL,
-//   connections integer ARRAY
+//   email VARCHAR UNIQUE NOT NULL
 //   );
 
 //  Tech table
