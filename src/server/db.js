@@ -75,6 +75,7 @@ const pool = new Pool({
 // sender_id
 // receiver_id
 // conversation_id
+// body_text
 
 // CREATE TABLE Messages (
 // message_id serial PRIMARY KEY,
