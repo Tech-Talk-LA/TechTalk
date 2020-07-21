@@ -32,7 +32,7 @@ CREATE TABLE Learn
 (
   learn_id serial PRIMARY KEY,
   tech_id int NOT NULL,
-  user_id int NOT NULL,
+  user_id int UNIQUE NOT NULL,
   FOREIGN KEY (tech_id) REFERENCES techs(tech_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -218,3 +218,21 @@ INSERT INTO Messages
 VALUES
   (1, 5, 3, 'yeah!');
 
+
+
+-- practice joins
+
+-- When a user logs in, this should run automatically (maybe?) to generate matches
+
+-- How to join user A with MULTIPLE users based on their Learn and Teach techs
+
+-- get User A's Teach Techs AND Learn Techs
+-- then search all users who have Teach Techs === User A's Learn Tech, AND Learn Techs === A's Teach Tech
+
+  -- 1. Get user's techs (ONE tech)
+       --  const user_learn_id = SELECT tech_id FROM Learn WHERE user_id = ($1);
+       --  const user_teach_idS = SELECT tech_id FROM Teach WHERE user_id = ($1); 
+  -- 2. Search through teach to see who can teach it
+    -- 
+
+-- 
