@@ -38,6 +38,7 @@ export default function Login({ navigation }) {
                     otherParam: `yayahyuh`
                 })}
             />
+            <Text>Hello</Text>
         </View >
     );
 }
