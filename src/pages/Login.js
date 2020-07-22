@@ -31,7 +31,7 @@ export default function Login({ navigation }) {
           //   isLoggedIn
           //     ? navigation.navigate("UserFeed")
           //     : navigation.navigate("SignUp");
-          navigation.navigate("UserFeed")}}
+          navigation.navigate("User Feed")}}
         >
           LogIn
         </Text>

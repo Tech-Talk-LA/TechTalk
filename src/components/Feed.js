@@ -1,14 +1,50 @@
-import React from 'react';
-import {Text, View, StatusBar, Alert} from 'react-native';
-import styles from '../../assets/syles.js';
+import React from "react";
+import { FlatList } from "react-native-gesture-handler";
+import FeedItem from "./FeedBox.js";
 
-export default function userFeed({ navigation }) {
-  const recBoxes = //map array of returned matching users
-  /*each rec box will receive recUser pic, name, teachable languages*/
+export default function Feed() {
+  //this is dummy data used for verifying render basic functionality
+  const matches = [
+    {
+      name: "Nick",
+      id: 1,
+      body: "Javascript extraordinaire",
+      toLearn: "Python",
+      toTeach: "Javascript",
+    },
+    {
+      name: "Hideaki",
+      id: 2,
+      body: "Cool music cat",
+      toLearn: "Javascript",
+      toTeach: "C++",
+    },
+    {
+      name: "Matt",
+      id: 3,
+      body: "Hacking is my life",
+      toLearn: "C++",
+      toTeach: "Python",
+    },
+  ];
 
-  return (
-    <Feed>
-      {recBoxes}
-    </Feed>
-  )
+  //function to render the individual feed item boxes
+  function renderItem({ item }) {
+    return (
+      <FeedItem
+        name={item.name}
+        body={item.body}
+        toLearn={item.toLearn}
+        toTeach={item.toTeach}
+        id={item.id}
+      ></FeedItem>
+    );
+  };
+
+  //returns the list of feed items
+    return (<FlatList
+    data={matches}
+    renderItem={renderItem}
+    keyExtractor={(item) => item.id}
+    />)
 }
