@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Button, TextInput, TouchableOpacity } from "react-native";
-import styles from "./assets/styles.js";
+import styles from "../../assets/styles.js";
+//import UserFeed from "./UserFeed.js";
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
 
@@ -9,7 +10,7 @@ export default function Login({ navigation }) {
   const [passWordInput, setPassWordInput] = React.useState("Password");
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Text name="title">Welcome to Tech Talk</Text>
       <Text>UserName</Text>
       <TextInput
         style={styles.textInput}
@@ -24,18 +25,18 @@ export default function Login({ navigation }) {
         secureTextEntry={true}
       />
       <TouchableOpacity>
-        <Text style={styles.loginButton}>LogIn</Text>
+        <Text
+          style={styles.loginButton}
+          onPress={() => {
+          //   isLoggedIn
+          //     ? navigation.navigate("UserFeed")
+          //     : navigation.navigate("SignUp");
+          navigation.navigate("UserFeed")}}
+        >
+          LogIn
+        </Text>
       </TouchableOpacity>
-      <Button title="Sign Up" onPress={() => navigation.navigate("Details")} />
-      <Button
-        title="Go to Details"
-        onPress={() =>
-          navigation.navigate("Details", {
-            itemId: 86,
-            otherParam: `yayahyuh`,
-          })
-        }
-      />
+     
     </View>
   );
 }
