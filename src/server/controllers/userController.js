@@ -8,7 +8,7 @@ userController.createUser = (req, res, next) => {
   const { user_name, description, email } = req.body;
   const params = [user_name, description, email];
 
-  // adds new user onto the database (Note: adding 'RETURN *' returns the new user)
+  // adds new user onto the database (Note: adding 'RETURNING *' returns the new user)
   const queryString = 
     `INSERT INTO Users (user_name, description, email)
      VALUES ($1, $2, $3) RETURNING *;`;

@@ -13,7 +13,7 @@ app.use('/auth', authRouter);
 
 // route to create a new user
 app.post('/users', userController.createUser, (req, res) => {
-  res.status(200).json(res.locals)
+  res.status(200).json(res.locals.user)
 })
 
 app.use((err, req, res, next) => {
