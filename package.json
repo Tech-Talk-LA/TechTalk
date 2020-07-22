@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "server" : "nodemon src/server/server.js"
+    "server": "nodemon src/server/server.js"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
