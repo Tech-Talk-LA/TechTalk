@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 export default function Login({ navigation }) {
     const [userNameInput, setUserNameInput] = React.useState('UserName')
@@ -29,7 +29,7 @@ export default function Login({ navigation }) {
             </TouchableOpacity>
             <Button
                 title="Sign Up"
-                onPress={() => navigation.navigate('Details')}
+                onPress={() => navigation.navigate('Signup')}
             />
             <Button
                 title="Go to Details"
@@ -38,7 +38,6 @@ export default function Login({ navigation }) {
                     otherParam: `yayahyuh`
                 })}
             />
-            <Text>Hello</Text>
         </View >
     );
 }

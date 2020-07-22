@@ -5,6 +5,7 @@ import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/pages/Login'
+import Signup from './src/pages/Signup'
 
 function DetailsScreen({ route, navigation }) {
   const { itemId } = route.params;
@@ -42,7 +43,7 @@ function App() {
           options={{ title: 'Login' }}
         />
         <Stack.Screen name="Details" component={DetailsScreen} />
-        {/* <Stack.Screen name="SignUp" component={DetailsScreen} /> */}
+        <Stack.Screen name="Signup" component={Signup} />
       </Stack.Navigator>
     </NavigationContainer>
   );
