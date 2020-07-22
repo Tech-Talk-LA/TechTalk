@@ -139,10 +139,6 @@ VALUES
 Insert into teach
   (tech_id, user_id)
 VALUES
-  (1, 5);
-Insert into teach
-  (tech_id, user_id)
-VALUES
   (4, 5);
 Insert into teach
   (tech_id, user_id)
@@ -219,20 +215,24 @@ VALUES
   (1, 5, 3, 'yeah!');
 
 
+-- Main matching query
 
--- practice joins
+-- DO 2 Queries and wrap in TRANSACTION
 
--- When a user logs in, this should run automatically (maybe?) to generate matches
+-- SELECT user_id FROM Teach WHERE tech_id = (SELECT tech_id FROM Learn WHERE user_id = 3)
+-- SELECT user_id FROM Learn WHERE tech_id = (SELECT tech_id FROM Teach WHERE user_id = 3);
 
--- How to join user A with MULTIPLE users based on their Learn and Teach techs
+-- AFTER GETTING TWO LISTS, combine them to find a match
 
--- get User A's Teach Techs AND Learn Techs
--- then search all users who have Teach Techs === User A's Learn Tech, AND Learn Techs === A's Teach Tech
+-- Chat query Renders when user clicks on a connected person. Should show entire convo
 
-  -- 1. Get user's techs (ONE tech)
-       --  const user_learn_id = SELECT tech_id FROM Learn WHERE user_id = ($1);
-       --  const user_teach_idS = SELECT tech_id FROM Teach WHERE user_id = ($1); 
-  -- 2. Search through teach to see who can teach it
-    -- 
+-- input  user_id(Hideaki): 1 and partner_id(Edwin): 2
 
--- 
+-- SELECT conversation_id FROM Conversations WHERE sender_id = 1 AND receiver_id = 2 OR sender_id = 2 AND receiver_id = 1
+
+-- now we have the conversatio_id (1), so fetch every message inside messages
+-- SELECT body_text FROM Messages WHERE conversation_id = 1 ORDER BY created_at ASC
+-- all messages will have a sender/receiver but the front end will have to figure out who is who to format the text
+
+
+
