@@ -28,16 +28,6 @@ userController.createUser = (req, res, next) => {
   })
 }
 
-
-
-// get user info at the feed page 
-// GET USER INFO MIDDLEWARE (name, description, teaching stack, learning stack)
-// userController.getUserInfo = (req, res, next) => {
-
-// }
-
-// show recommended people to connect with based on interests/experience  
-// GET MATCHED USERS MIDDLEWARE
 userController.findMatchIds = (req, res, next) => {
   const { learn_tech_id, teach_tech_id_array } = req.body;
   const params = [learn_tech_id, ...teach_tech_id_array];
@@ -45,7 +35,6 @@ userController.findMatchIds = (req, res, next) => {
   `SELECT user_id FROM Teach WHERE tech_id=($1) 
   INTERSECT
   SELECT user_id FROM Learn WHERE tech_id=($2)`
-  
   // loop through params only if length > 2; this indicates teach_tech_id_array has more than one val
   if (params.length > 2) {
     for (let i = 2; i < params.length; i++) {
@@ -70,12 +59,10 @@ userController.findMatchIds = (req, res, next) => {
 
 userController.getMatchProfiles = (req, res, next) => {
   // res.locals.matchIds is an array of user_id numbers [1,4,6];
-
   // if there were no matches
   if (!res.locals.matchIds.length) return next();
   else {
     const params = [...res.locals.matchIds];
-    // params is an array of ids [1,3,4]
     let queryString = `SELECT * FROM Users WHERE user_id IN `
     for (let i = 0; i < params.length; i++) {
       // if first item, add '('   and $1, which is $${i + 1}
@@ -93,11 +80,8 @@ userController.getMatchProfiles = (req, res, next) => {
     db.query(queryString, params)
     .then((data) => {
       // data.rows is the array of profiles
-      console.log(data.rows)
       res.locals.matchProfiles = data.rows
-      // eventually res.locals.matchProfiles will be an array of profiles.
       return next()
-
     })
     .catch(error => {
       return next({

@@ -11,7 +11,7 @@ app.use(express.json()) // accesses request body
 
 app.use('/auth', authRouter);
 
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 
 
 app.use((err, req, res, next) => {
