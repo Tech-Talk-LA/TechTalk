@@ -12,6 +12,7 @@ DROP TABLE Conversations
 CASCADE;
 DROP TABLE Messages
 CASCADE;
+DROP TABLE Devices CASCADE;
 
 -- Create Tables
 CREATE TABLE Users
@@ -66,6 +67,13 @@ CREATE TABLE Messages
   FOREIGN KEY (sender_id) REFERENCES users(user_id),
   FOREIGN KEY (receiver_id) REFERENCES users(user_id),
   FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id)
+);
+
+CREATE TABLE Devices 
+(
+  device_id VARCHAR PRIMARY KEY,
+  auth_token VARCHAR NOT NULL,
+  last_updated TIMESTAMP default current_timestamp NOT NULL
 );
 
 ------------------------
