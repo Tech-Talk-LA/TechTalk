@@ -63,7 +63,7 @@ userController.getMatchProfiles = (req, res, next) => {
   if (!res.locals.matchIds.length) return next();
   else {
     const params = [...res.locals.matchIds];
-    let queryString = `SELECT * FROM Users WHERE user_id IN `
+    let queryString = `SELECT user_id, user_name, description FROM Users WHERE user_id IN `
     for (let i = 0; i < params.length; i++) {
       // if first item, add '('   and $1, which is $${i + 1}
       // if last item, add $${i+1} and ')'
@@ -93,18 +93,6 @@ userController.getMatchProfiles = (req, res, next) => {
 }
 
 
-
-
-
-
-
-
-
-
-
-// might go on a different file
-  // when user clicks on the message icon, get names of recipients 
-  // when a user clicks on a recipient from message icon, show all messages between userA and userB
 
 
 module.exports = userController;
