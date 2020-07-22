@@ -4,17 +4,15 @@ const app = express();
 const PORT = 3000; 
 
 const authRouter = require('./routers/authRouter');
-const userController = require('./controllers/userController');
+const userRouter = require('./routers/userRouter')
 
 // without this, I cannot console log any req.body on any controller file
-app.use(express.json())
+app.use(express.json()) // accesses request body
 
-app.use('/auth', authRouter); 
+app.use('/auth', authRouter);
 
-// route to create a new user
-app.post('/users', userController.createUser, (req, res) => {
-  res.status(200).json(res.locals.user)
-})
+app.use('/users', userRouter);
+
 
 app.use((err, req, res, next) => {
   const defaultErr = {
