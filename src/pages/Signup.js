@@ -1,95 +1,159 @@
 import React from 'react';
-import { View, Text, Button, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Formik } from 'formik';
-import { Picker } from '@react-native-community/picker';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { Button, Body, Container, Header, Content, Form, Item, Picker, Textarea, Input, Separator, ListItem, CheckBox } from 'native-base';
+// import { Formik } from 'formik';
 // import RNPickerSelect from 'react-native-picker-select';
-import CheckBox from 'react-native-check-box'
+// import CheckBox from 'react-native-check-box'
 
 export default function Signup({ navigation }) {
-    const [pythonBool, setPythonBool] = React.useState(false)
+    const [nameInput, setNameInput] = React.useState('')
+    const [userNameInput, setUserNameInput] = React.useState('')
+    const [emailInput, setEmailInput] = React.useState('')
+    const [passwordInput, setPasswordInput] = React.useState('')
+    const [confirmPWInput, setConfirmPWInput] = React.useState('')
+    const [pickTech, setPickTech] = React.useState('Python')
+    const [aboutMe, setAboutMe] = React.useState('')
+    const [checkBoxData, setCheckboxData] = React.useState({
+        python: false,
+        javascript: false,
+        ruby: false,
+        golang: false,
+        cplusplus: false
+    })
+    const [loginResults, setLoginResults] = React.useState({
+        name: '',
+        userName: '',
+        email: '',
+        password: '',
+        confirmPW: '',
+        pickTech: '',
+        about: '',
+        toLearnCheckBoxes: {}
+    })
 
     function checked() {
         console.log('checked')
     }
 
     return (
-        <Formik
-            initialValues={formFields}
-            onSubmit={values => console.log(values)}
-        >
-            {({ handleChange, handleBlur, handleSubmit, values }) => (
-                <View style={{
-                    flex: 1, alignItems: 'center', justifyContent: 'center',
-                }} >
-                    <Text>First Name </Text>
-                    <TextInput
-                        onChangeText={handleChange('firstName')}
-                        onBlur={handleBlur('firstName')}
-                        value={values.firstName}
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 200 }}
-                    />
-                    <Text>Last Name </Text>
-                    <TextInput
-                        onChangeText={handleChange('lastName')}
-                        onBlur={handleBlur('lastName')}
-                        value={values.lastName}
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 200 }}
-                    />
-                    <Text>Email: </Text>
-                    <TextInput
-                        onChangeText={handleChange('email')}
-                        onBlur={handleBlur('email')}
-                        value={values.email}
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 200 }}
-                    />
-                    <Text>Hi</Text>
+        <Container>
+            <Content>
+                <Form>
+                    <Separator>
+                        <Text>Personal Info</Text>
+                    </Separator>
+                    <Item>
+                        <Input onChangeText={text => setNameInput(text)} value={nameInput} placeholder="Name" />
+                    </Item>
+                    <Item >
+                        <Input onChangeText={text => setUserNameInput(text)} value={userNameInput} placeholder="UserName" />
+                    </Item>
+                    <Item >
+                        <Input onChangeText={text => setEmailInput(text)} value={emailInput} placeholder="Email" />
+                    </Item>
+                    <Item >
+                        <Input onChangeText={text => setPasswordInput(text)} value={passwordInput} placeholder="Password" secureTextEntry={true} />
+                    </Item>
+                    <Item last>
+                        <Input onChangeText={text => setConfirmPWInput(text)} value={confirmPWInput} placeholder="Confirm Password" secureTextEntry={true} />
+                    </Item>
+                    <Separator>
+                        <Text>What Language do you Know?</Text>
+                    </Separator>
                     <Picker
-                        selectedValue={'java'}
-                        style={{ height: 50, width: 100 }}
-                        onValueChange={(itemValue, itemIndex) => {
-                            return;// this.setState({language: itemValue})
-                        }
-                        }>
-                        <Picker.Item label="Java" value="java" />
-                        <Picker.Item label="JavaScript" value="js" />
+                        mode="dropdown"
+                        style={{ width: undefined }}
+                        placeholder="Select your Language"
+                        placeholderStyle={{ color: "#bfc6ea" }}
+                        placeholderIconColor="#007aff"
+                        selectedValue={pickTech}
+                        onValueChange={value => setPickTech(value)}
+                    >
+                        <Picker.Item label="Python" value="Python" />
+                        <Picker.Item label="Javascript" value="Javascript" />
+                        <Picker.Item label="Ruby" value="Ruby" />
+                        <Picker.Item label="GoLang" value="GoLang" />
+                        <Picker.Item label="C++" value="C++" />
                     </Picker>
-                    {/* <RNPickerSelect
-                        placeholder={placeholder}
-                        onValueChange={(value) => {
-                            console.log(value)
-                            handleChange('checkBoxes')
-                        }}
-                        items={formFields.checkboxes}
-                    /> */}
-                    {/* <Text>Python</Text> */}
-                    {/* <CheckBox ischecked={values.checkboxes.python} onPress={() => values.checkboxes.python} /> */}
-                    <Button onPress={handleSubmit} title="Submit" />
-                </View>
-            )}
-        </Formik>
+                    <Separator>
+                        <Text>What Language would you like to learn?</Text>
+                    </Separator>
+                    <ListItem>
+                        <CheckBox
+                            onPress={() => checkBoxData.python ? setCheckboxData({ ...checkBoxData, python: false }) : setCheckboxData({ ...checkBoxData, python: true })}
+                            checked={checkBoxData.python}
+                        />
+                        <Body>
+                            <Text>Python</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem>
+                        <CheckBox
+                            onPress={() => checkBoxData.javascript ? setCheckboxData({ ...checkBoxData, javascript: false }) : setCheckboxData({ ...checkBoxData, javascript: true })}
+                            checked={checkBoxData.javascript}
+                        />
+                        <Body>
+                            <Text>Javascript</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem>
+                        <CheckBox
+                            onPress={() => checkBoxData.ruby ? setCheckboxData({ ...checkBoxData, ruby: false }) : setCheckboxData({ ...checkBoxData, ruby: true })}
+                            checked={checkBoxData.ruby}
+                        />
+                        <Body>
+                            <Text>Ruby</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem>
+                        <CheckBox
+                            onPress={() => checkBoxData.golang ? setCheckboxData({ ...checkBoxData, golang: false }) : setCheckboxData({ ...checkBoxData, golang: true })}
+                            checked={checkBoxData.golang}
+                        />
+                        <Body>
+                            <Text>GoLang</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem>
+                        <CheckBox
+                            onPress={() => checkBoxData.cplusplus ? setCheckboxData({ ...checkBoxData, cplusplus: false }) : setCheckboxData({ ...checkBoxData, cplusplus: true })}
+                            checked={checkBoxData.cplusplus}
+                        />
+                        <Body>
+                            <Text>C++</Text>
+                        </Body>
+                    </ListItem>
+                    <Separator>
+                        <Text>Tell us about yourself</Text>
+                    </Separator>
+                    <Textarea onChangeText={text => setAboutMe(text)} value={aboutMe} rowSpan={5} placeholder="Type here..." />
+                </Form>
+                <Button full info
+                    action="Submit"
+                    onPress={() => {
+                        console.log('pressed')
+                        setLoginResults({
+                            ...loginResults,
+                            name: nameInput,
+                            userName: userNameInput,
+                            email: emailInput,
+                            password: passwordInput,
+                            confirmPW: confirmPWInput,
+                            pickTech: pickTech,
+                            about: aboutMe,
+                            toLearnCheckBoxes: checkBoxData
+                        })
+                        console.log(loginResults)
+                    }
 
+                    }
+                >
+                    <Text>Submit</Text>
+                </Button>
+            </Content>
+        </Container>
     );
 }
-
-const placeholder = {
-    label: 'Select Language',
-    value: "Select Language",
-    color: '#9EA0A4',
-};
-
-
-
-const formFields = {
-    firstName: '', userName: '', email: '', Password: '', confirmPassword: '',
-    checkboxes: [
-        { label: 'Python', Value: 'Python' },
-        { label: 'Javascript', value: 'Javascript' },
-        { label: 'Ruby', value: 'Ruby' },
-        { label: 'GoLang', value: 'GoLang' },
-        { label: 'C++', value: 'C++' }
-    ]
-}
-
 
 const styles = StyleSheet.create({
     view: {
@@ -97,7 +161,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: "blue",
-        color: 'white',
+        color: '#000',
         padding: 20,
         borderRadius: 5,
     },

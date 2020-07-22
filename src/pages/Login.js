@@ -35,7 +35,7 @@ export default function Login({ navigation }) {
                 title="Go to Details"
                 onPress={() => navigation.navigate('Details', {
                     itemId: 86,
-                    otherParam: `yayahyuh`
+                    otherParam: `test`
                 })}
             />
         </View >
