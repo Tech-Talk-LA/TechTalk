@@ -27,16 +27,10 @@ export default function Login({ navigation }) {
             <TouchableOpacity>
                 <Text style={styles.button}>LogIn</Text>
             </TouchableOpacity>
+            <Text>Don't have an account?</Text>
             <Button
                 title="Sign Up"
                 onPress={() => navigation.navigate('Signup')}
-            />
-            <Button
-                title="Go to Details"
-                onPress={() => navigation.navigate('Details', {
-                    itemId: 86,
-                    otherParam: `test`
-                })}
             />
         </View >
     );

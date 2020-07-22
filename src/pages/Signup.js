@@ -20,19 +20,61 @@ export default function Signup({ navigation }) {
         golang: false,
         cplusplus: false
     })
-    const [loginResults, setLoginResults] = React.useState({
-        name: '',
-        userName: '',
-        email: '',
-        password: '',
-        confirmPW: '',
-        pickTech: '',
-        about: '',
-        toLearnCheckBoxes: {}
-    })
 
-    function checked() {
-        console.log('checked')
+
+    const apiState = {
+        name: nameInput,
+        userName: userNameInput,
+        email: emailInput,
+        password: passwordInput,
+        confirmPW: confirmPWInput,
+        pickTech: pickTech,
+        about: aboutMe,
+        toTeachCheckboxes: checkBoxData
+    }
+
+    //  
+
+
+    function validateForm() {
+        if (nameInput === '') {
+            alert(`Please enter Your Name`);
+            return false;
+        }
+        if (userNameInput === '') {
+            alert(`Please enter Your UserName`);
+            return false;
+        }
+        if (emailInput === '') {
+            alert(`Please enter Your Email`);
+            return false;
+        }
+        if (passwordInput === '') {
+            alert(`Please enter Your Password`);
+            return false;
+        }
+        if (confirmPWInput === '') {
+            alert(`Please confirm Your Password`)
+            return false;
+        }
+        if (passwordInput !== confirmPWInput) {
+            alert(`Your Passwords don't match`)
+            return false;
+        }
+        // if all checkboxes are false alert to fill a ccheckbox and return false
+        const checkBoxFieldValidation = Object.values(checkBoxData).some((languages) => languages)
+        console.log(Object.values(checkBoxData))
+        if (!checkBoxFieldValidation) {
+            alert(`Please select a language`)
+            return false
+        }
+        return true;
+    }
+
+    function apiCall() {
+        console.log(apiState)
+        if (validateForm()) alert('Signup Successful!')
+        console.log(apiState)
     }
 
     return (
@@ -58,10 +100,10 @@ export default function Signup({ navigation }) {
                         <Input onChangeText={text => setConfirmPWInput(text)} value={confirmPWInput} placeholder="Confirm Password" secureTextEntry={true} />
                     </Item>
                     <Separator>
-                        <Text>What Language do you Know?</Text>
+                        <Text>What Language would you like to learn?</Text>
                     </Separator>
                     <Picker
-                        mode="dropdown"
+                        mode="dialog"
                         style={{ width: undefined }}
                         placeholder="Select your Language"
                         placeholderStyle={{ color: "#bfc6ea" }}
@@ -76,7 +118,7 @@ export default function Signup({ navigation }) {
                         <Picker.Item label="C++" value="C++" />
                     </Picker>
                     <Separator>
-                        <Text>What Language would you like to learn?</Text>
+                        <Text>What Languages do you Know?</Text>
                     </Separator>
                     <ListItem>
                         <CheckBox
@@ -84,7 +126,7 @@ export default function Signup({ navigation }) {
                             checked={checkBoxData.python}
                         />
                         <Body>
-                            <Text>Python</Text>
+                            <Text> Python</Text>
                         </Body>
                     </ListItem>
                     <ListItem>
@@ -93,7 +135,7 @@ export default function Signup({ navigation }) {
                             checked={checkBoxData.javascript}
                         />
                         <Body>
-                            <Text>Javascript</Text>
+                            <Text> Javascript</Text>
                         </Body>
                     </ListItem>
                     <ListItem>
@@ -102,7 +144,7 @@ export default function Signup({ navigation }) {
                             checked={checkBoxData.ruby}
                         />
                         <Body>
-                            <Text>Ruby</Text>
+                            <Text> Ruby</Text>
                         </Body>
                     </ListItem>
                     <ListItem>
@@ -111,7 +153,7 @@ export default function Signup({ navigation }) {
                             checked={checkBoxData.golang}
                         />
                         <Body>
-                            <Text>GoLang</Text>
+                            <Text> GoLang</Text>
                         </Body>
                     </ListItem>
                     <ListItem>
@@ -120,7 +162,7 @@ export default function Signup({ navigation }) {
                             checked={checkBoxData.cplusplus}
                         />
                         <Body>
-                            <Text>C++</Text>
+                            <Text> C++</Text>
                         </Body>
                     </ListItem>
                     <Separator>
@@ -130,23 +172,7 @@ export default function Signup({ navigation }) {
                 </Form>
                 <Button full info
                     action="Submit"
-                    onPress={() => {
-                        console.log('pressed')
-                        setLoginResults({
-                            ...loginResults,
-                            name: nameInput,
-                            userName: userNameInput,
-                            email: emailInput,
-                            password: passwordInput,
-                            confirmPW: confirmPWInput,
-                            pickTech: pickTech,
-                            about: aboutMe,
-                            toLearnCheckBoxes: checkBoxData
-                        })
-                        console.log(loginResults)
-                    }
-
-                    }
+                    onPress={apiCall}
                 >
                     <Text>Submit</Text>
                 </Button>
