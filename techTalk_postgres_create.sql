@@ -12,7 +12,8 @@ DROP TABLE Conversations
 CASCADE;
 DROP TABLE Messages
 CASCADE;
-DROP TABLE Devices CASCADE;
+DROP TABLE Devices
+CASCADE;
 
 -- Create Tables
 CREATE TABLE Users
@@ -69,7 +70,7 @@ CREATE TABLE Messages
   FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id)
 );
 
-CREATE TABLE Devices 
+CREATE TABLE Devices
 (
   device_id VARCHAR PRIMARY KEY,
   auth_token VARCHAR NOT NULL,
@@ -237,6 +238,27 @@ VALUES
 -- get User A's Teach Techs AND Learn Techs
 -- then search all users who have Teach Techs === User A's Learn Tech, AND Learn Techs === A's Teach Tech
 
+  -- 1. Get user's techs (ONE tech)
+       --  const user_learn_id = SELECT tech_id FROM Learn WHERE user_id = ($1);
+       --  const user_teach_idS = SELECT tech_id FROM Teach WHERE user_id = ($1); 
+  -- 2. Search through teach to see who can teach it
+    -- 
+
+-- 
+  -- 1. Get user's techs (ONE tech)
+       --  const user_learn_id = SELECT tech_id FROM Learn WHERE user_id = ($1);
+       --  const user_teach_idS = SELECT tech_id FROM Teach WHERE user_id = ($1); 
+  -- 2. Search through teach to see who can teach it
+    -- 
+
+-- 
+  -- 1. Get user's techs (ONE tech)
+       --  const user_learn_id = SELECT tech_id FROM Learn WHERE user_id = ($1);
+       --  const user_teach_idS = SELECT tech_id FROM Teach WHERE user_id = ($1); 
+  -- 2. Search through teach to see who can teach it
+    -- 
+
+-- 
   -- 1. Get user's techs (ONE tech)
        --  const user_learn_id = SELECT tech_id FROM Learn WHERE user_id = ($1);
        --  const user_teach_idS = SELECT tech_id FROM Teach WHERE user_id = ($1); 
