@@ -2,8 +2,7 @@ const db = require('../db');
 
 const userController = {};
 
-// MIDDLEWARE FUNCTIONS
-// create a new user onto the database
+// CREATE NEW USER MIDDLEWARE
 userController.createUser = (req, res, next) => {
   // destructure user_name, desc, email from req.body (use postman)
   const { user_name, description, email } = req.body;
@@ -27,13 +26,16 @@ userController.createUser = (req, res, next) => {
     })
   })
 }
+
 // get user info at the feed page 
+// GET USER INFO MIDDLEWARE
 
 // show recommended people to connect with based on interests/experience  
+// GET MATCHED USERS MIDDLEWARE
 
-// when user clicks on the message icon, get names of recipients 
-
-// when a user clicks on a recipient from message icon, show all messages between userA and userB
+// might go on a different file
+  // when user clicks on the message icon, get names of recipients 
+  // when a user clicks on a recipient from message icon, show all messages between userA and userB
 
 
 module.exports = userController;
