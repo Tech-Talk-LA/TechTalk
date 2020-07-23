@@ -55,7 +55,7 @@ const matchReducer = (state, action) => {
   };
 };
 
-const userProvider = ({ children }) => {
+function UserProvider({ children }) {
   const [userState, userDispatch] = React.useReducer(userReducer, initialUserState); 
   return (
     <UserStateContext.Provider value={userState}>
@@ -66,7 +66,7 @@ const userProvider = ({ children }) => {
   );
 };
 
-const matchesProvider = ({ children }) => {
+function MatchesProvider ({ children }) {
   const [matchesState, matchesDispatch] = React.useReducer(matchReducer, initialMatchesState); 
   return (
     <MatchesContext.Provider value={matchesState}>
@@ -77,7 +77,7 @@ const matchesProvider = ({ children }) => {
   );
 };
 
-const useUserState = () => {
+function useUserState() {
   const userStateContext = React.useContext(UserStateContext); 
   if (userStateContext === undefined) {
     throw new Error('useUserState must be used within a UserStateProvider'); 
@@ -85,7 +85,7 @@ const useUserState = () => {
   return userStateContext; 
 }; 
 
-const useUserDispatch = () => {
+function useUserDispatch() {
   const userDispatchContext = React.useContext(UserDispatchContext); 
   if (userDispatchContext === undefined) {
     throw new Error('useUserDispatch must be used within a UserDispatchProvider'); 
@@ -93,7 +93,7 @@ const useUserDispatch = () => {
   return userDispatchContext; 
 }; 
 
-const useMatchesState = () => {
+function useMatchesState() {
   const matchesStateContext = React.useContext(MatchesContext); 
   if (matchesStateContext === undefined) {
     throw new Error('useMatchesState must be used within a MatchesStateProvider'); 
@@ -101,7 +101,7 @@ const useMatchesState = () => {
   return matchesStateContext; 
 }; 
 
-const useMatchesDispatch = () => {
+function useMatchesDispatch() {
   const matchesDispatchContext = React.useContext(matchesDispatchContext); 
   if (matchesDispatchContext === undefined) {
     throw new Error('useMatchesDispatch must be used within a MatchesDispatchProvider'); 
@@ -109,7 +109,7 @@ const useMatchesDispatch = () => {
   return matchesDispatchContext; 
 }; 
 
-export {userProvider, matchesProvider, useUserState, useUserDispatch, useMatchesState, useMatchesDispatch};
+export {MatchesProvider};
 
 
 

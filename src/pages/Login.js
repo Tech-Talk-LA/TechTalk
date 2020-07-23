@@ -5,7 +5,7 @@ import styles from "../../assets/styles.js";
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
 
-export default function Login({ navigation }) {
+export default function Login({ navigation, logIn }) {
   const [userNameInput, setUserNameInput] = React.useState("UserName");
   const [passWordInput, setPassWordInput] = React.useState("Password");
   return (
@@ -31,6 +31,7 @@ export default function Login({ navigation }) {
           //   isLoggedIn
           //     ? navigation.navigate("UserFeed")
           //     : navigation.navigate("SignUp");
+          logIn();
           navigation.navigate("User Feed")}}
         >
           LogIn

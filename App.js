@@ -10,16 +10,63 @@ import Login from "./src/pages/Login";
 import UserFeed from "./src/pages/UserFeed";
 
 const Stack = createStackNavigator();
+const dummyMatches = [
+  {
+    name: "Nick",
+    id: 1,
+    body: "Javascript extraordinaire",
+    toLearn: "Python",
+    toTeach: "Javascript",
+  },
+  {
+    name: "Hideaki",
+    id: 2,
+    body: "Cool music cat",
+    toLearn: "Javascript",
+    toTeach: "C++",
+  },
+  {
+    name: "Matt",
+    id: 3,
+    body: "Hacking is my life",
+    toLearn: "C++",
+    toTeach: "Python",
+  },
+];
+
+const defUserObj = {
+  isLoggedIn : false,
+  userInfo : {
+    id : '',
+    username: '',
+    email: '',
+    toTeach: '', 
+    toLearn: '' 
+  },
+};
 
 function App() {
+  const [matches, setMatches] = React.useState([]); 
+  const [fetching, setFetching] = React.useState(false);
+  const [userInfo, setUserInfo] = React.useState(defUserObj);
+
+  const getMatches = (id, toTeach, toLearn) => {
+    setTimeout(() => setMatches(dummyMatches), 2000)
+  }; 
+  
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Log in">
-        <Stack.Screen name="Log in" component={Login} />
-        <Stack.Screen name="User Feed" component={UserFeed} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Log in">
+          <Stack.Screen name="Log in">
+            {props => (<Login {...props} logIn={getMatches} />)}
+          </Stack.Screen>
+          <Stack.Screen name="User Feed">
+            {props => (<UserFeed {...props} matches={matches} />)}
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
+  
 }
 
 export default App;
