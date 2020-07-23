@@ -1,8 +1,15 @@
 import React from 'react';
-import { View, Text, Button, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+    View,
+    Text,
+    Button,
+    TextInput,
+    TouchableOpacity,
+    StyleSheet,
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import styles from "../../assets/styles.js";
+import styles from '../../assets/styles.js';
 //import UserFeed from "./UserFeed.js";
 
 
@@ -38,34 +45,33 @@ export default function Login({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text name="title">Welcome to Tech Talk</Text>
-            <Text>UserName</Text>
+            <Text style={styles.h2} name="title">
+                Welcome to TechTalk!
+            </Text>
+            <Text style={styles.inputLabel}>UserName</Text>
             <TextInput
                 style={styles.textInput}
                 onChangeText={(text) => setUserNameInput(text)}
                 value={userNameInput}
-                placeholder="username"
             />
-            <Text>Password</Text>
+            <Text style={styles.inputLabel}>Password</Text>
             <TextInput
                 style={styles.textInput}
                 onChangeText={(text) => setPassWordInput(text)}
                 value={passWordInput}
-                placeholder="password"
                 secureTextEntry={true}
             />
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.loginButton}>
                 <Text
-                    style={styles.loginButton}
+                    style={styles.loginButtonText}
                     onPress={() => {
                         //   isLoggedIn
                         //     ? navigation.navigate("UserFeed")
                         //     : navigation.navigate("SignUp");
-                        navigation.navigate("User Feed")
-                        console.log(loginData)
+                        navigation.navigate('User Feed');
                     }}
                 >
-                    LogIn
+                    Login
                 </Text>
             </TouchableOpacity>
             <Text>Don't have an account?</Text>

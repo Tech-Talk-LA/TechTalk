@@ -198,45 +198,53 @@ export default function Signup({ navigation }) {
                         <Text>What languages can you teach?</Text>
                     </Separator>
                     {/* {listItems} */}
-                    <ListItem>
+                    <ListItem
+                        onPress={() => checkBoxData.python ? setCheckboxData({ ...checkBoxData, python: false }) : setCheckboxData({ ...checkBoxData, python: true })}
+                    >
                         <CheckBox
-                            onPress={() => checkBoxData.python ? setCheckboxData({ ...checkBoxData, python: false }) : setCheckboxData({ ...checkBoxData, python: true })}
                             checked={checkBoxData.python}
                         />
                         <Body>
                             <Text> Python</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
+                    <ListItem
+                        onPress={() => checkBoxData.javascript ? setCheckboxData({ ...checkBoxData, javascript: false }) : setCheckboxData({ ...checkBoxData, javascript: true })}
+                    >
                         <CheckBox
-                            onPress={() => checkBoxData.javascript ? setCheckboxData({ ...checkBoxData, javascript: false }) : setCheckboxData({ ...checkBoxData, javascript: true })}
                             checked={checkBoxData.javascript}
                         />
                         <Body>
                             <Text> Javascript</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
+                    <ListItem
+                        onPress={() => checkBoxData.ruby ? setCheckboxData({ ...checkBoxData, ruby: false }) : setCheckboxData({ ...checkBoxData, ruby: true })}
+                    >
                         <CheckBox
-                            onPress={() => checkBoxData.ruby ? setCheckboxData({ ...checkBoxData, ruby: false }) : setCheckboxData({ ...checkBoxData, ruby: true })}
+
                             checked={checkBoxData.ruby}
                         />
                         <Body>
                             <Text> Ruby</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
+                    <ListItem
+                        onPress={() => checkBoxData.golang ? setCheckboxData({ ...checkBoxData, golang: false }) : setCheckboxData({ ...checkBoxData, golang: true })}
+                    >
                         <CheckBox
-                            onPress={() => checkBoxData.golang ? setCheckboxData({ ...checkBoxData, golang: false }) : setCheckboxData({ ...checkBoxData, golang: true })}
+
                             checked={checkBoxData.golang}
                         />
                         <Body>
                             <Text> GoLang</Text>
                         </Body>
                     </ListItem>
-                    <ListItem>
+                    <ListItem
+                        onPress={() => checkBoxData.cplusplus ? setCheckboxData({ ...checkBoxData, cplusplus: false }) : setCheckboxData({ ...checkBoxData, cplusplus: true })}
+                    >
                         <CheckBox
-                            onPress={() => checkBoxData.cplusplus ? setCheckboxData({ ...checkBoxData, cplusplus: false }) : setCheckboxData({ ...checkBoxData, cplusplus: true })}
+
                             checked={checkBoxData.cplusplus}
                         />
                         <Body>
