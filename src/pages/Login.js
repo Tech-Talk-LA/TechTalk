@@ -22,6 +22,7 @@ export default function Login({ navigation }) {
       </Text>
       <Text style={styles.inputLabel}>UserName</Text>
       <TextInput
+        label="UserName"
         style={styles.textInput}
         onChangeText={(text) => setUserNameInput(text)}
         value={userNameInput}
@@ -33,20 +34,18 @@ export default function Login({ navigation }) {
         value={passWordInput}
         secureTextEntry={true}
       />
-      <TouchableOpacity style={styles.loginButton}>
-        <Text
-          style={styles.loginButtonText}
-          onPress={() => {
-            //   isLoggedIn
-            //     ? navigation.navigate("UserFeed")
-            //     : navigation.navigate("SignUp");
-            navigation.navigate('User Feed');
-          }}
-        >
-          Login
-        </Text>
+      <TouchableOpacity
+        onPress={() => {
+          //   isLoggedIn
+          //     ? navigation.navigate("UserFeed")
+          //     : navigation.navigate("SignUp");
+          navigation.navigate('User Feed');
+        }}
+        style={styles.loginButton}
+      >
+        <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
-      <Text>Don't have an account?</Text>
+      <Text style={styles.text}>Don't have an account?</Text>
       <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
     </View>
   );
