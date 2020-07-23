@@ -53,6 +53,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colorBlack,
   },
+  text: {
+    color: colorBlack,
+    fontWeight: '600',
+  },
   textInput: {
     height: 40,
     padding: padding_1,
@@ -71,10 +75,18 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: margin_5,
+    margin: margin_5,
     backgroundColor: colorBlue,
     padding: padding_3,
     borderRadius,
+  },
+  submitButton: {
+    backgroundColor: colorBlue,
+  },
+  submitText: {
+    color: colorWhite,
+    fontWeight: '700',
+    fontSize: fontSize_2,
   },
   loginButtonText: {
     color: colorWhite,
@@ -85,7 +97,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colorGray,
     backgroundColor: colorBlack,
-    padding: padding_4,
+    padding: padding_3,
+    paddingTop: padding_2,
     marginBottom: margin_1,
     borderRadius,
     width: 280,
