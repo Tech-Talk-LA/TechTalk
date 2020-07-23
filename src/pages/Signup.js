@@ -91,7 +91,7 @@ export default function Signup({ navigation }) {
         console.log(apiState)
         if (validateForm()) {
             alert('Signup Successful!')
-            navigation.navigate('Home')
+            navigation.navigate('Log in')
         }
         console.log(apiState)
     }
