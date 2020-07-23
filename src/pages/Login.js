@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import styles from "../../assets/styles.js";
 //import UserFeed from "./UserFeed.js";
 
-export default function Login({ navigation }) {
+export default function Login({ navigation, logIn }) {
     const [userNameInput, setUserNameInput] = React.useState('UserName')
     const [passWordInput, setPassWordInput] = React.useState('Password')
     return (
@@ -31,6 +31,7 @@ export default function Login({ navigation }) {
                         //   isLoggedIn
                         //     ? navigation.navigate("UserFeed")
                         //     : navigation.navigate("SignUp");
+                        logIn();
                         navigation.navigate("User Feed")
                     }}
                 >

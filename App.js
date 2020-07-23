@@ -57,6 +57,7 @@ function App() {
   return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Log in">
+          <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Log in">
             {props => (<Login {...props} logIn={getMatches} />)}
           </Stack.Screen>
