@@ -13,8 +13,41 @@ import styles from '../../assets/styles.js';
 //import UserFeed from "./UserFeed.js";
 
 export default function Login({ navigation }) {
-  const [userNameInput, setUserNameInput] = React.useState('UserName');
-  const [passWordInput, setPassWordInput] = React.useState('Password');
+  const [userNameInput, setUserNameInput] = React.useState('');
+  const [passWordInput, setPassWordInput] = React.useState('');
+
+  function loginValidation() {
+    if (userNameInput === '') {
+      alert('Please enter a username');
+      return false;
+    }
+    if (passWordInput === '') {
+      alert('Please enter your password');
+      return false;
+    }
+    return true;
+  }
+
+  function apiCall() {
+    if (loginValidation()) {
+      console.log(loginData);
+      alert('Login Successful');
+      navigation.navigate('User Feed');
+    }
+  }
+
+  function loginButton() {
+    //   isLoggedIn
+    //     ? navigation.navigate("UserFeed")
+    //     : navigation.navigate("SignUp");
+    apiCall();
+  }
+
+  const loginData = {
+    username: userNameInput,
+    password: passWordInput,
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.h2} name="title">
@@ -26,6 +59,7 @@ export default function Login({ navigation }) {
         style={styles.textInput}
         onChangeText={(text) => setUserNameInput(text)}
         value={userNameInput}
+        placeholder="username"
       />
       <Text style={styles.inputLabel}>Password</Text>
       <TextInput
@@ -33,16 +67,9 @@ export default function Login({ navigation }) {
         onChangeText={(text) => setPassWordInput(text)}
         value={passWordInput}
         secureTextEntry={true}
+        placeholder="password"
       />
-      <TouchableOpacity
-        onPress={() => {
-          //   isLoggedIn
-          //     ? navigation.navigate("UserFeed")
-          //     : navigation.navigate("SignUp");
-          navigation.navigate('User Feed');
-        }}
-        style={styles.loginButton}
-      >
+      <TouchableOpacity onPress={loginButton} style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
       <Text style={styles.text}>Don't have an account?</Text>

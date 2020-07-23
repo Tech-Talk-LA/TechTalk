@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: margin_5,
     backgroundColor: colorBlue,
-    padding: padding_3,
+    padding: padding_2,
     borderRadius,
   },
   submitButton: {
