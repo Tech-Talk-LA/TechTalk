@@ -9,8 +9,8 @@ const FeedItem = ({ name, id, body, toLearn, toTeach }) => {
     <View style={styles.feedbox} id={id}>
       <Text style={styles.feedItemName}>{name}</Text>
       <Text style={styles.feedItemDesc}>{body}</Text>
-      <Text style={styles.feedItem}>Wants to Learn: {toLearn}</Text>
-      <Text style={styles.feedItem}>Wants to Teach: {toTeach}</Text>
+      {/* <Text style={styles.feedItem}>Wants to Learn: {toLearn}</Text>
+      <Text style={styles.feedItem}>Wants to Teach: {toTeach}</Text> */}
     </View>
   );
 };
