@@ -1,42 +1,17 @@
-import React from 'react';
-import { FlatList } from 'react-native-gesture-handler';
-import FeedItem from './FeedBox.js';
+import React from "react";
+import { FlatList } from "react-native-gesture-handler";
+import FeedItem from "./FeedBox.js";
+// import MatchesProvider from '../context/context.js'
 
-export default function Feed() {
-  //this is dummy data used for verifying render basic functionality
-  const matches = [
-    {
-      name: 'Nick',
-      id: 1,
-      body: 'Javascript extraordinaire',
-      toLearn: 'Python',
-      toTeach: 'Javascript',
-    },
-    {
-      name: 'Hideaki',
-      id: 2,
-      body: 'Cool music cat',
-      toLearn: 'Javascript',
-      toTeach: 'C++',
-    },
-    {
-      name: 'Matt',
-      id: 3,
-      body: 'Hacking is my life',
-      toLearn: 'C++',
-      toTeach: 'Python',
-    },
-  ];
+export default function Feed({ matches }) {
 
   //function to render the individual feed item boxes
   function renderItem({ item }) {
     return (
       <FeedItem
-        name={item.name}
-        body={item.body}
-        toLearn={item.toLearn}
-        toTeach={item.toTeach}
-        id={item.id}
+        name={item.user_name}
+        body={item.description}
+        id={item.user_id}
       ></FeedItem>
     );
   }
@@ -46,7 +21,7 @@ export default function Feed() {
     <FlatList
       data={matches}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.user_id.toString()}
     />
   );
 }
