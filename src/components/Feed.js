@@ -16,16 +16,14 @@ export default function Feed({ matches }) {
         id={item.id}
       ></FeedItem>
     );
-  };
+  }
 
   //returns the list of feed items
-    return (
-      // <MatchesProvider>
-        <FlatList
-          data={matches}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      // </MatchesProvider>
-    )
+  return (
+    <FlatList
+      data={matches}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+    />
+  );
 }

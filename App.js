@@ -1,13 +1,13 @@
 // In App.js in a new project
 
-import * as React from "react";
-//import { View, Text, Button, TextInput } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-//import MainReducer from "./src/reducers/MainReducer.js";
-import Login from "./src/pages/Login";
+import * as React from 'react';
+import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './src/pages/Login';
+import Signup from './src/pages/Signup';
 //import styles from "./assets/styles.js";
-import UserFeed from "./src/pages/UserFeed";
+import UserFeed from './src/pages/UserFeed';
 
 const Stack = createStackNavigator();
 const dummyMatches = [
@@ -42,6 +42,13 @@ const defUserObj = {
     email: '',
     toTeach: '', 
     toLearn: '' 
+  }
+};
+const headerStyle = {
+  headerStyle: { backgroundColor: '#036bfc' },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: '700',
   },
 };
 
@@ -55,16 +62,30 @@ function App() {
   }; 
   
   return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Log in">
-          <Stack.Screen name="Log in">
-            {props => (<Login {...props} logIn={getMatches} />)}
-          </Stack.Screen>
-          <Stack.Screen name="User Feed">
-            {props => (<UserFeed {...props} matches={matches} />)}
-          </Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+      // <NavigationContainer>
+      //   <Stack.Navigator initialRouteName="Log in">
+      //     <Stack.Screen name="Log in">
+      //       {props => (<Login {...props} logIn={getMatches} />)}
+      //     </Stack.Screen>
+      //     <Stack.Screen name="User Feed">
+      //       {props => (<UserFeed {...props} matches={matches} />)}
+      //     </Stack.Screen>
+      //   </Stack.Navigator>
+      // </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Log in">
+        <Stack.Screen name="Signup" component={Signup} options={headerStyle} />
+        <Stack.Screen name="Log in" options={headerStyle}>
+        {props => (<Login {...props} logIn={getMatches} />)}
+        </Stack.Screen>
+        <Stack.Screen
+          name="User Feed"
+          options={headerStyle}
+        >
+          {props => (<UserFeed {...props} matches={matches} />)}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
   
 }
