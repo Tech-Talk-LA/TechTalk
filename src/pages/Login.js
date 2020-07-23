@@ -1,9 +1,16 @@
 import React from 'react';
-import { View, Text, Button, TextInput, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import styles from '../../assets/styles.js';
 //import UserFeed from "./UserFeed.js";
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
 
 export default function Login({ navigation }) {
   const [userNameInput, setUserNameInput] = React.useState('UserName');
@@ -39,6 +46,8 @@ export default function Login({ navigation }) {
           Login
         </Text>
       </TouchableOpacity>
+      <Text>Don't have an account?</Text>
+      <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
     </View>
   );
 }

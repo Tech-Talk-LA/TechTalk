@@ -7,21 +7,21 @@ export default function Feed() {
   const matches = [
     {
       name: 'Nick',
-      id: '1',
+      id: 1,
       body: 'Javascript extraordinaire',
       toLearn: 'Python',
       toTeach: 'Javascript',
     },
     {
       name: 'Hideaki',
-      id: '2',
+      id: 2,
       body: 'Cool music cat',
       toLearn: 'Javascript',
       toTeach: 'C++',
     },
     {
       name: 'Matt',
-      id: '3',
+      id: 3,
       body: 'Hacking is my life',
       toLearn: 'C++',
       toTeach: 'Python',
@@ -46,7 +46,7 @@ export default function Feed() {
     <FlatList
       data={matches}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
     />
   );
 }
