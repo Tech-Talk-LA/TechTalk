@@ -52,7 +52,7 @@ userController.findMatchIds = (req, res, next) => {
   })
   .catch(error => {
     return next({
-      log: 'Error in userController.createUser Middleware:',
+      log: 'Error in userController.findMatchIds Middleware:',
       message: {error,}
     })
   })
@@ -61,6 +61,7 @@ userController.findMatchIds = (req, res, next) => {
 // GET PROFILES OF MATCHED USERS MIDDLEWARE
 userController.getMatchProfiles = (req, res, next) => {
   // res.locals.matchIds is an array of user_id numbers [1,4,6];
+  console.log('RES.LOCALS.MATCHIDS : ', res.locals.matchIds)
   // if there were no matches
   if (!res.locals.matchIds.length) return next();
   else {
@@ -69,7 +70,10 @@ userController.getMatchProfiles = (req, res, next) => {
     for (let i = 0; i < params.length; i++) {
       // if first item, add '('   and $1, which is $${i + 1}
       // if last item, add $${i+1} and ')'
-      if (i === 0) {
+      if (params.length === 1) {
+        queryString += `($1)`; 
+      }
+      else if (i === 0) {
         queryString += `($${i+1}, `
       }
       else if (i === params.length - 1) {

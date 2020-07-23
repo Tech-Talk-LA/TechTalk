@@ -9,11 +9,9 @@ export default function Feed({ matches }) {
   function renderItem({ item }) {
     return (
       <FeedItem
-        name={item.name}
-        body={item.body}
-        toLearn={item.toLearn}
-        toTeach={item.toTeach}
-        id={item.id}
+        name={item.user_name}
+        body={item.description}
+        id={item.user_id}
       ></FeedItem>
     );
   };

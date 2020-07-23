@@ -51,7 +51,24 @@ function App() {
   const [userInfo, setUserInfo] = React.useState(defUserObj);
 
   const getMatches = (id, toTeach, toLearn) => {
-    setTimeout(() => setMatches(dummyMatches), 2000)
+    const body = {
+      "learn_tech_id": 1,
+      "teach_tech_id_array": [4,5]
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(body)
+    }
+    fetch('http://192.168.1.6:3000/user/matches', options)
+    .then(res => res.json())
+    .then(data => {
+      console.log('just got back: ', data)
+      setMatches(data)
+    })
+    .catch(err => console.log(err))
   }; 
   
   return (
