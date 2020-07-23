@@ -28,6 +28,7 @@ userController.createUser = (req, res, next) => {
   })
 }
 
+// FIND MATCHES ID MIDDLEWARE
 userController.findMatchIds = (req, res, next) => {
   const { learn_tech_id, teach_tech_id_array } = req.body;
   const params = [learn_tech_id, ...teach_tech_id_array];
@@ -57,6 +58,7 @@ userController.findMatchIds = (req, res, next) => {
   })
 }
 
+// GET PROFILES OF MATCHED USERS MIDDLEWARE
 userController.getMatchProfiles = (req, res, next) => {
   // res.locals.matchIds is an array of user_id numbers [1,4,6];
   // if there were no matches
