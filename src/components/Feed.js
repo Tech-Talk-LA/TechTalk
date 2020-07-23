@@ -42,9 +42,9 @@ export default function Feed() {
   };
 
   //returns the list of feed items
-    return (<FlatList
+  return (<FlatList
     data={matches}
     renderItem={renderItem}
-    keyExtractor={(item) => item.id}
-    />)
+    keyExtractor={(item) => item.id.toString()}
+  />)
 }
