@@ -1,30 +1,30 @@
-import React from "react";
-import { FlatList } from "react-native-gesture-handler";
-import FeedItem from "./FeedBox.js";
+import React from 'react';
+import { FlatList } from 'react-native-gesture-handler';
+import FeedItem from './FeedBox.js';
 
 export default function Feed() {
   //this is dummy data used for verifying render basic functionality
   const matches = [
     {
-      name: "Nick",
-      id: 1,
-      body: "Javascript extraordinaire",
-      toLearn: "Python",
-      toTeach: "Javascript",
+      name: 'Nick',
+      id: '1',
+      body: 'Javascript extraordinaire',
+      toLearn: 'Python',
+      toTeach: 'Javascript',
     },
     {
-      name: "Hideaki",
-      id: 2,
-      body: "Cool music cat",
-      toLearn: "Javascript",
-      toTeach: "C++",
+      name: 'Hideaki',
+      id: '2',
+      body: 'Cool music cat',
+      toLearn: 'Javascript',
+      toTeach: 'C++',
     },
     {
-      name: "Matt",
-      id: 3,
-      body: "Hacking is my life",
-      toLearn: "C++",
-      toTeach: "Python",
+      name: 'Matt',
+      id: '3',
+      body: 'Hacking is my life',
+      toLearn: 'C++',
+      toTeach: 'Python',
     },
   ];
 
@@ -39,12 +39,14 @@ export default function Feed() {
         id={item.id}
       ></FeedItem>
     );
-  };
+  }
 
   //returns the list of feed items
-    return (<FlatList
-    data={matches}
-    renderItem={renderItem}
-    keyExtractor={(item) => item.id}
-    />)
+  return (
+    <FlatList
+      data={matches}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+    />
+  );
 }
