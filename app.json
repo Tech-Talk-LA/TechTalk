@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/templogo.png",
+      "image": "./assets/templogo-min.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },

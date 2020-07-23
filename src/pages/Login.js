@@ -32,9 +32,18 @@ export default function Login({ navigation }) {
 
     function apiCall() {
         if (loginValidation()) {
-            alert('Login Successful')
             console.log(loginData)
+            alert('Login Successful')
+            navigation.navigate('User Feed')
         }
+    }
+
+    function loginButton() {
+
+        //   isLoggedIn
+        //     ? navigation.navigate("UserFeed")
+        //     : navigation.navigate("SignUp");
+        apiCall()
     }
 
     const loginData = {
@@ -53,6 +62,7 @@ export default function Login({ navigation }) {
                 style={styles.textInput}
                 onChangeText={(text) => setUserNameInput(text)}
                 value={userNameInput}
+                placeholder="username"
             />
             <Text style={styles.inputLabel}>Password</Text>
             <TextInput
@@ -60,16 +70,12 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setPassWordInput(text)}
                 value={passWordInput}
                 secureTextEntry={true}
+                placeholder="password"
             />
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity style={styles.loginButton} onPress={loginButton} >
                 <Text
                     style={styles.loginButtonText}
-                    onPress={() => {
-                        //   isLoggedIn
-                        //     ? navigation.navigate("UserFeed")
-                        //     : navigation.navigate("SignUp");
-                        navigation.navigate('User Feed');
-                    }}
+
                 >
                     Login
                 </Text>
@@ -77,7 +83,7 @@ export default function Login({ navigation }) {
             <Text>Don't have an account?</Text>
             <Button
                 title="Sign Up"
-                onPress={() => navigation.navigate('Signup')}
+                onPress={(() => navigation.navigate('Signup'))}
             />
         </View >
     );
