@@ -4,7 +4,11 @@ Matching application for learning new Tech languages and Frameworks.
 
 ## Set up
 
-After making your own postgres instance, run the techTalk_postgres_create.sql
+Make your own postgres instance on ElephantSQL
+add a .env file to the root of the project, and add
+
+PG_URI=yourElephantStringThatStartsWithpostgres://
+run the techTalk_postgres_create.sql
 by using `psql -d -f techTalk_postgres_create.sql` in the terminal
 
 Run the server `npm run server`
