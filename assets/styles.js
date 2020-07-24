@@ -98,8 +98,7 @@ const styles = StyleSheet.create({
     borderColor: colorGray,
     backgroundColor: colorBlack,
     padding: padding_3,
-    paddingTop: padding_2,
-    marginBottom: margin_1,
+    marginBottom: margin_2,
     borderRadius,
     width: 280,
   },
@@ -113,6 +112,7 @@ const styles = StyleSheet.create({
     color: colorWhite,
     fontWeight: '700',
     fontSize: fontSize_3,
+    marginBottom: margin_1,
   },
   feedItemDesc: {
     textAlign: 'center',

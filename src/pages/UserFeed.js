@@ -6,9 +6,9 @@ import Feed from '../components/Feed.js';
 //View for the User Feed page once log in is approved; currently lacks nav bar for messages and user profile
 export default function UserFeed({ navigation, matches }) {
   return (
-    <View style={styles.container}>
+    <View showsVerticalScrollIndicator={false} style={styles.container}>
       <Text style={styles.h1}>Your Matches!</Text>
-      <Feed matches={matches}/>
+      <Feed matches={matches} />
     </View>
   );
 }
