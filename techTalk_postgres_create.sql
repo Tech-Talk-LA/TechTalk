@@ -126,7 +126,18 @@ INSERT INTO Users
   (user_name, description, email)
 VALUES
   ('Nate', 'I know java, python, and js and want to learn more js', 'nate@example.com');
-
+INSERT INTO Users
+  (user_name, description, email)
+VALUES
+  ('Abby', 'I know Ruby very well and would love to teach it.', 'Abby@example.com');
+INSERT INTO Users
+  (user_name, description, email)
+VALUES
+  ('Matt', 'Hey everybody! I am looking for a Python teacher. I can teach you Ruby in return. Definitely not a hacker.', 'swoleHacker@example.com');
+INSERT INTO Users
+  (user_name, description, email)
+VALUES
+  ('Pat', 'HELP! I need a Java teacher. I am a Ruby dev so I can help you in return.', 'pat@example.com')
 -- TEACH
 
 Insert into teach
@@ -153,6 +164,18 @@ Insert into teach
   (tech_id, user_id)
 VALUES
   (5, 5);
+Insert into teach
+  (tech_id, user_id)
+VALUES
+  (2, 6);
+Insert into teach
+  (tech_id, user_id)
+VALUES
+  (2, 7);
+Insert into teach
+  (tech_id, user_id)
+VALUES
+  (2, 8)
 
 -- LEARN
 
@@ -176,6 +199,18 @@ INSERT INTO LEARN
   (tech_id, user_id)
 VALUES
   (1, 5);
+INSERT INTO LEARN
+  (tech_id, user_id)
+VALUES
+  (5, 6)
+INSERT INTO LEARN
+  (tech_id, user_id)
+VALUES
+  (4, 7)
+INSERT INTO LEARN
+  (tech_id, user_id)
+VALUES
+  (5, 8)
 
 
 -- CONVERSATIONS

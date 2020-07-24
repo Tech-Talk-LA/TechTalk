@@ -30,8 +30,8 @@ export default function Login({ navigation, logIn }) {
 
   function apiCall() {
     if (loginValidation()) {
-      console.log(loginData);
-      alert('Login Successful');
+      // console.log(loginData);
+      // alert('Login Successful');
       logIn();
       navigation.navigate('User Feed');
     }

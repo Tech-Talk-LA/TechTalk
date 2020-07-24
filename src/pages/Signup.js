@@ -38,6 +38,7 @@ export default function Signup({ navigation }) {
     ruby: false,
     golang: false,
     cplusplus: false,
+    java: false,
   });
   const [activeRadio, setActiveRadio] = React.useState('');
 
@@ -113,8 +114,8 @@ export default function Signup({ navigation }) {
   function apiCall() {
     console.log(apiState);
     if (validateForm()) {
-      alert('Signup Successful!');
-      navigation.navigate('Log in');
+      // alert('Signup Successful!');
+      navigation.navigate('User Feed');
     }
     console.log(apiState);
   }

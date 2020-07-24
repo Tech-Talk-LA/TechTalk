@@ -35,14 +35,14 @@ const Stack = createStackNavigator();
 // ];
 
 const defUserObj = {
-  isLoggedIn : false,
-  userInfo : {
-    id : '',
+  isLoggedIn: false,
+  userInfo: {
+    id: '',
     username: '',
     email: '',
-    toTeach: '', 
-    toLearn: '' 
-  }
+    toTeach: '',
+    toLearn: '',
+  },
 };
 const headerStyle = {
   headerStyle: { backgroundColor: '#036bfc' },
@@ -53,48 +53,44 @@ const headerStyle = {
 };
 
 function App() {
-  const [matches, setMatches] = React.useState([]); 
+  const [matches, setMatches] = React.useState([]);
   const [fetching, setFetching] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState(defUserObj);
 
   const getMatches = (id, toTeach, toLearn) => {
     const body = {
-      "learn_tech_id": 2,
-      "teach_tech_id_array": [4,5]
+      learn_tech_id: 2,
+      teach_tech_id_array: [4, 5],
     };
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body)
-    }
-    fetch('http://192.168.1.6:3000/user/matches', options)
-    .then(res => res.json())
-    .then(data => {
-      console.log('just got back: ', data)
-      setMatches(data)
-    })
-    .catch(err => console.log(err))
-  }; 
-  
+      body: JSON.stringify(body),
+    };
+    fetch('http://192.168.1.126:3000/user/matches', options)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('just got back: ', data);
+        setMatches(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Log in">
         <Stack.Screen name="Signup" component={Signup} options={headerStyle} />
         <Stack.Screen name="Log in" options={headerStyle}>
-        {props => (<Login {...props} logIn={getMatches} />)}
+          {(props) => <Login {...props} logIn={getMatches} />}
         </Stack.Screen>
-        <Stack.Screen
-          name="User Feed"
-          options={headerStyle}
-        >
-          {props => (<UserFeed {...props} matches={matches} />)}
+        <Stack.Screen name="User Feed" options={headerStyle}>
+          {(props) => <UserFeed {...props} matches={matches} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
-  
 }
 
 export default App;
